@@ -1,4 +1,4 @@
-<div align="center">
+<div>
 
 ```
 ██████ ▄▄▄▄   ▄▄▄   ▄▄▄▄ ▄▄ ▄▄ ████▄  ▄▄▄▄   ▄▄▄  ▄▄ ▄▄▄▄
@@ -7,8 +7,6 @@
 ```
 
 **Automated Android DAST Framework**
-
-*One command. Nine phases. Full VAPT coverage.*
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
@@ -273,7 +271,7 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 <div align="center">
 
-**Built by [0xs0m](https://github.com/Somchandra17)**
+**Built by [0xs0m](somm.tf)**
 
 *If TrashDroid helped you find bugs, consider starring the repo.*
 
