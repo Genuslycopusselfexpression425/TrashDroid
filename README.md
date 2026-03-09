@@ -1,4 +1,4 @@
-# Android DAST -- Automated VAPT Framework
+# Android DAST - Automated VAPT Framework
 
 A terminal-based automation framework for performing Dynamic Application Security Testing (DAST) against Android applications. It orchestrates `adb`, `drozer`, `scrcpy`, `apktool`, and `sqlite3` to execute a full 9-phase security assessment, capture screenshots after every test, and produce an AI-ready Markdown report.
 
@@ -6,19 +6,24 @@ A terminal-based automation framework for performing Dynamic Application Securit
 
 ## Table of Contents
 
-- [Features](#features)
-- [Architecture](#architecture)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Interactive Mode](#interactive-mode)
-  - [Non-Interactive / Auto Mode](#non-interactive--auto-mode)
-  - [Selective Phases](#selective-phases)
-- [Test Phases](#test-phases)
-- [Output Structure](#output-structure)
-- [Report Format](#report-format)
-- [Troubleshooting](#troubleshooting)
-- [Disclaimer](#disclaimer)
+- [Android DAST - Automated VAPT Framework](#android-dast---automated-vapt-framework)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Architecture](#architecture)
+  - [Prerequisites](#prerequisites)
+    - [Host machine](#host-machine)
+    - [Target device](#target-device)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Interactive Mode](#interactive-mode)
+    - [Non-Interactive / Auto Mode](#non-interactive--auto-mode)
+    - [Selective Phases](#selective-phases)
+    - [All CLI Arguments](#all-cli-arguments)
+  - [Test Phases](#test-phases)
+  - [Output Structure](#output-structure)
+  - [Report Format](#report-format)
+  - [Troubleshooting](#troubleshooting)
+  - [Disclaimer](#disclaimer)
 
 ---
 
