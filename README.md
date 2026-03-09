@@ -11,17 +11,15 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Linux-FCC624?style=flat-square&logo=linux&logoColor=black)](https://github.com/Somchandra17/TrashDroid)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](https://github.com/Somchandra17/TrashDroid/pulls)
-
 ---
 
 </div>
 
 ## What is TrashDroid?
 
-TrashDroid is a terminal-based automation framework for **Dynamic Application Security Testing (DAST)** of Android applications. It orchestrates `adb`, `drozer`, `scrcpy`, `apktool`, and `sqlite3` to run a full **9-phase security assessment** — capturing screenshots after every test and generating an AI-ready Markdown report at the end.
+TrashDroid is a terminal-based automation framework for **Dynamic Application Security Testing (DAST)** of Android applications. It orchestrates `adb`, `drozer`, `scrcpy`, `apktool`, and `sqlite3` to run a full **9-phase security assessment** - capturing screenshots after every test and generating an AI-ready Markdown report at the end.
 
-> **TL;DR** — Point it at an APK, let it rip, feed the report to GPT-4 / Claude for instant risk ratings and Jira tickets.
+> **TL;DR** - Point it at an APK, let it rip, feed the report to GPT-4 / Claude for instant risk ratings and Jira tickets.
 
 ---
 
@@ -174,12 +172,12 @@ output/<package_name>/
 
 The generated `.md` report includes:
 
-1. **AI Prompt Header** — feed the report directly into GPT-4 / Claude for risk rating, executive summary, and Jira ticket generation
-2. **Executive Summary** — package name, device info, date, severity breakdown
-3. **Detailed Findings** — per-phase sections with severity, status, and full detail
-4. **Screenshots** — inline Markdown image references
-5. **Command Log** — collapsible section with every command and its output
-6. **Risk Summary Table** — flat table of all findings
+1. **AI Prompt Header** - feed the report directly into GPT-4 / Claude for risk rating, executive summary, and Jira ticket generation
+2. **Executive Summary** - package name, device info, date, severity breakdown
+3. **Detailed Findings** - per-phase sections with severity, status, and full detail
+4. **Screenshots** - inline Markdown image references
+5. **Command Log** - collapsible section with every command and its output
+6. **Risk Summary Table** - flat table of all findings
 
 ---
 
@@ -198,14 +196,14 @@ TrashDroid/
 ├── phases/
 │   ├── preflight.py        # Tool & device checks
 │   ├── setup.py            # Device selection, APK install
-│   ├── drozer_testing.py   # Phase 1 — Drozer tests
-│   ├── filesystem.py       # Phase 3 — File system analysis
-│   ├── dump_verify.py      # Phase 4 — Deep dump verification
-│   ├── logcat.py           # Phase 5 — Logcat monitoring
-│   ├── memory.py           # Phase 6 — Memory analysis
-│   ├── backup.py           # Phase 7 — Backup analysis
-│   ├── manifest.py         # Phase 8 — Manifest analysis
-│   └── post_logout.py      # Phase 9 — Post-logout tests
+│   ├── drozer_testing.py   # Phase 1 - Drozer tests
+│   ├── filesystem.py       # Phase 3 - File system analysis
+│   ├── dump_verify.py      # Phase 4 - Deep dump verification
+│   ├── logcat.py           # Phase 5 - Logcat monitoring
+│   ├── memory.py           # Phase 6 - Memory analysis
+│   ├── backup.py           # Phase 7 - Backup analysis
+│   ├── manifest.py         # Phase 8 - Manifest analysis
+│   └── post_logout.py      # Phase 9 - Post-logout tests
 └── output/                 # Generated per run (gitignored)
 ```
 
@@ -231,7 +229,7 @@ TrashDroid/
 <summary><b>ADB backup times out</b></summary>
 
 - Tap "Back up my data" on the device when prompted
-- In `--auto` mode this may fail if unattended — logged as Info
+- In `--auto` mode this may fail if unattended - logged as Info
 </details>
 
 <details>
@@ -244,7 +242,7 @@ TrashDroid/
 <details>
 <summary><b>File system pull returns empty</b></summary>
 
-- Device must be rooted — verify with `adb shell su -c id`
+- Device must be rooted - verify with `adb shell su -c id`
 - Android 13+ per-app SELinux contexts may block even root pulls
 </details>
 
@@ -259,7 +257,7 @@ TrashDroid/
 
 ## License
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ---
 
