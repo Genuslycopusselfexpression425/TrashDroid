@@ -29,7 +29,7 @@ TrashDroid is a terminal-based automation framework for **Dynamic Application Se
 
 ## Features
 
-| | Feature | Details |
+| Feature | Details |
 |---|---|
 | **Drozer Component Testing** | Exported activities, services, receivers, content providers, SQL injection & path traversal |
 | **File System Analysis** | Shared prefs, SQLite, Realm/NoSQL, cache, WebView storage, regex scans for secrets |
