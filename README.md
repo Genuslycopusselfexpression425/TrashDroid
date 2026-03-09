@@ -30,17 +30,17 @@ TrashDroid is a terminal-based automation framework for **Dynamic Application Se
 ## Features
 
 | | Feature | Details |
-|---|---|---|
-| 🔍 | **Drozer Component Testing** | Exported activities, services, receivers, content providers, SQL injection & path traversal |
-| 📂 | **File System Analysis** | Shared prefs, SQLite, Realm/NoSQL, cache, WebView storage, regex scans for secrets |
-| 🔬 | **Deep Dump Verification** | Per-table SQLite queries, XML parsing, binary string extraction |
-| 📡 | **Logcat Monitoring** | Real-time capture, scans for leaked credentials, cleartext HTTP, SQL, stack traces |
-| 🧠 | **Memory Analysis** | Heap dump, `/proc/pid/maps`, string scanning, open FDs, network connections |
-| 💾 | **Backup Analysis** | ADB backup extraction + sensitive data grep |
-| 📋 | **Manifest Analysis** | `debuggable`, `allowBackup`, `usesCleartextTraffic`, exported components, dangerous permissions |
-| 🚪 | **Post-Logout Testing** | Re-launches activities after logout, privilege escalation via intent extras |
-| 📸 | **Auto Screenshots** | Captured after every test via `adb screencap` with optional `scrcpy` live mirror |
-| 📝 | **AI-Ready Reports** | Markdown report with AI prompt header, findings, screenshots, and full command log |
+|---|---|
+| **Drozer Component Testing** | Exported activities, services, receivers, content providers, SQL injection & path traversal |
+| **File System Analysis** | Shared prefs, SQLite, Realm/NoSQL, cache, WebView storage, regex scans for secrets |
+| **Deep Dump Verification** | Per-table SQLite queries, XML parsing, binary string extraction |
+| **Logcat Monitoring** | Real-time capture, scans for leaked credentials, cleartext HTTP, SQL, stack traces |
+| **Memory Analysis** | Heap dump, `/proc/pid/maps`, string scanning, open FDs, network connections |
+| **Backup Analysis** | ADB backup extraction + sensitive data grep |
+| **Manifest Analysis** | `debuggable`, `allowBackup`, `usesCleartextTraffic`, exported components, dangerous permissions |
+| **Post-Logout Testing** | Re-launches activities after logout, privilege escalation via intent extras |
+| **Auto Screenshots** | Captured after every test via `adb screencap` with optional `scrcpy` live mirror |
+| **AI-Ready Reports** | Markdown report with AI prompt header, findings, screenshots, and full command log |
 
 ---
 
