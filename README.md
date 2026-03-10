@@ -42,6 +42,61 @@ TrashDroid is a terminal-based automation framework for **Dynamic Application Se
 
 ## Quick Start
 
+### Option 1 — Docker (recommended)
+
+No tool installation needed. Just Docker + a USB-connected phone.
+
+```bash
+# Clone & build
+git clone https://github.com/Somchandra17/TrashDroid.git
+cd TrashDroid
+docker build -t trashdroid .
+
+# Make sure ADB server is running on the host
+adb start-server
+
+# Run (interactive) — host network lets the container talk to your phone
+docker run -it --network host \
+  -v "$(pwd)/output:/app/output" \
+  trashdroid
+
+# Run (full auto)
+docker run -it --network host \
+  -v "$(pwd)/output:/app/output" \
+  trashdroid --auto --device <SERIAL> --package <PKG> --apk /path/to/app.apk
+```
+
+> **How does it see my phone?** The container uses `--network host` to connect to the ADB server already running on your machine (port 5037). Your phone stays plugged into the host — the container just sends commands through the existing ADB daemon.
+
+<details>
+<summary><b>Alternative: USB passthrough (if host networking isn't available)</b></summary>
+
+```bash
+# Pass USB devices directly into the container
+docker run -it --privileged \
+  -v /dev/bus/usb:/dev/bus/usb \
+  -v "$(pwd)/output:/app/output" \
+  trashdroid
+```
+
+This gives the container direct USB access so it runs its own ADB server. Requires `--privileged`.
+
+</details>
+
+<details>
+<summary><b>Mounting an APK into the container</b></summary>
+
+```bash
+docker run -it --network host \
+  -v "$(pwd)/output:/app/output" \
+  -v "/path/to/your/app.apk:/app/target.apk" \
+  trashdroid --apk /app/target.apk --package com.example.app --auto
+```
+
+</details>
+
+### Option 2 — Native install
+
 ```bash
 # Clone
 git clone https://github.com/Somchandra17/TrashDroid.git
@@ -60,6 +115,8 @@ python main.py --auto --device <SERIAL> --package <PKG> --apk /path/to/app.apk
 ---
 
 ## Prerequisites
+
+> **Using Docker?** Skip this section — everything is bundled in the image.
 
 ### Host Machine
 

@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+output/
+.git/
+.gitignore
+.dockerignore
+kimi_response.txt
+todo.txt
+*.md
+!requirements.txt
+LICENSE
