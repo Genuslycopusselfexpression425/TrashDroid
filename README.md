@@ -9,6 +9,7 @@
 **Automated Android DAST Framework**
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![Docker](https://img.shields.io/badge/docker-ready-2496ED?style=flat-square&logo=docker&logoColor=white)](Dockerfile)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Linux-FCC624?style=flat-square&logo=linux&logoColor=black)](https://github.com/Somchandra17/TrashDroid)
 ---
@@ -42,37 +43,107 @@ TrashDroid is a terminal-based automation framework for **Dynamic Application Se
 
 ## Quick Start
 
-### Option 1 — Docker (recommended)
+```bash
+# Clone
+git clone https://github.com/Somchandra17/TrashDroid.git
+cd TrashDroid
 
-No tool installation needed. Just Docker + a USB-connected phone.
+# ── Docker (recommended) ──
+docker build -t trashdroid .
+adb start-server
+docker run -it --network host -v "$(pwd)/output:/app/output" trashdroid
+
+# ── Or native install ──
+pip install -r requirements.txt
+python main.py
+```
+
+> See the [Docker Guide](#docker-guide) below for full details, or [Native Install](#native-install) if you prefer running without Docker.
+
+---
+
+## Docker Guide
+
+### Why Docker?
+
+Zero dependency headaches. The image ships with **adb, drozer, apktool, sqlite3, strings, and Java 17** — all pre-configured. You just need Docker and a USB cable.
+
+### How does the container see my phone?
+
+```
+Phone ──USB──▶ Host (adb server :5037) ◀──network host── Docker container
+```
+
+Your phone stays plugged into the **host machine**. The host runs the ADB server on port `5037`. The container uses `--network host` to share the host's network stack, so it talks to the same ADB server — no USB passthrough needed.
+
+### 1. Build the image
 
 ```bash
-# Clone & build
 git clone https://github.com/Somchandra17/TrashDroid.git
 cd TrashDroid
 docker build -t trashdroid .
+```
 
-# Make sure ADB server is running on the host
+### 2. Start ADB on the host
+
+Make sure the ADB server is running and your phone is connected:
+
+```bash
 adb start-server
+adb devices          # verify your phone shows up
+```
 
-# Run (interactive) — host network lets the container talk to your phone
+### 3. Run TrashDroid
+
+**Interactive mode** (prompts for device, package, phases):
+
+```bash
 docker run -it --network host \
   -v "$(pwd)/output:/app/output" \
   trashdroid
-
-# Run (full auto)
-docker run -it --network host \
-  -v "$(pwd)/output:/app/output" \
-  trashdroid --auto --device <SERIAL> --package <PKG> --apk /path/to/app.apk
 ```
 
-> **How does it see my phone?** The container uses `--network host` to connect to the ADB server already running on your machine (port 5037). Your phone stays plugged into the host — the container just sends commands through the existing ADB daemon.
-
-<details>
-<summary><b>Alternative: USB passthrough (if host networking isn't available)</b></summary>
+**Full auto mode** (no prompts):
 
 ```bash
-# Pass USB devices directly into the container
+docker run -it --network host \
+  -v "$(pwd)/output:/app/output" \
+  trashdroid --auto --device <SERIAL> --package <PACKAGE> --apk /app/target.apk
+```
+
+**Run specific phases only:**
+
+```bash
+docker run -it --network host \
+  -v "$(pwd)/output:/app/output" \
+  trashdroid --phases 1,8,9 --auto --device <SERIAL> --package <PACKAGE>
+```
+
+### 4. Mount an APK from the host
+
+If the APK lives on your host machine, bind-mount it into the container:
+
+```bash
+docker run -it --network host \
+  -v "$(pwd)/output:/app/output" \
+  -v "/home/user/targets/app.apk:/app/target.apk" \
+  trashdroid --apk /app/target.apk --package com.example.app
+```
+
+### 5. Get the results
+
+Output is written to `/app/output` inside the container — which maps to `./output` on your host thanks to the `-v` flag. After the run completes:
+
+```bash
+ls output/<package_name>/
+# DAST_Report_*.md  screenshots/  filesystem/  apktool_out/  ...
+```
+
+### Alternative: USB passthrough
+
+If `--network host` doesn't work for you (e.g., Docker Desktop on macOS/Windows), pass USB devices directly:
+
+```bash
 docker run -it --privileged \
   -v /dev/bus/usb:/dev/bus/usb \
   -v "$(pwd)/output:/app/output" \
@@ -81,34 +152,32 @@ docker run -it --privileged \
 
 This gives the container direct USB access so it runs its own ADB server. Requires `--privileged`.
 
-</details>
+### Docker cheat sheet
 
-<details>
-<summary><b>Mounting an APK into the container</b></summary>
+| What you want | Command |
+|---|---|
+| Build image | `docker build -t trashdroid .` |
+| Interactive run | `docker run -it --network host -v "$(pwd)/output:/app/output" trashdroid` |
+| Auto run | `docker run -it --network host -v "$(pwd)/output:/app/output" trashdroid --auto --device SERIAL --package PKG` |
+| Mount APK | Add `-v "/path/to/app.apk:/app/target.apk"` and `--apk /app/target.apk` |
+| Specific phases | Add `--phases 1,3,8` |
+| USB passthrough | Replace `--network host` with `--privileged -v /dev/bus/usb:/dev/bus/usb` |
+| Shell into container | `docker run -it --network host --entrypoint bash trashdroid` |
+| Rebuild (no cache) | `docker build --no-cache -t trashdroid .` |
+
+---
+
+## Native Install
 
 ```bash
-docker run -it --network host \
-  -v "$(pwd)/output:/app/output" \
-  -v "/path/to/your/app.apk:/app/target.apk" \
-  trashdroid --apk /app/target.apk --package com.example.app --auto
-```
-
-</details>
-
-### Option 2 — Native install
-
-```bash
-# Clone
 git clone https://github.com/Somchandra17/TrashDroid.git
 cd TrashDroid
 
-# Install deps
 pip install -r requirements.txt
 
-# Run (interactive)
 python main.py
 
-# Run (full auto)
+# Or full auto
 python main.py --auto --device <SERIAL> --package <PKG> --apk /path/to/app.apk
 ```
 
@@ -308,6 +377,22 @@ TrashDroid/
 
 - App must be running and in the foreground
 - Non-debuggable apps may produce empty dumps on some devices
+</details>
+
+<details>
+<summary><b>Docker: "no devices/emulators found"</b></summary>
+
+- Make sure the ADB server is running on the **host** before starting the container: `adb start-server`
+- Confirm the phone shows up on the host: `adb devices`
+- Ensure you're using `--network host` when running the container
+- If on macOS/Windows Docker Desktop, `--network host` won't work — use USB passthrough instead: `--privileged -v /dev/bus/usb:/dev/bus/usb`
+</details>
+
+<details>
+<summary><b>Docker: output folder is empty or permission denied</b></summary>
+
+- Make sure you mount the output volume: `-v "$(pwd)/output:/app/output"`
+- If permission denied, the host directory may be owned by a different user — run `sudo chown -R $USER:$USER output/`
 </details>
 
 ---
