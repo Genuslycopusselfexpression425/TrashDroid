@@ -103,7 +103,9 @@ docker run -it --network host \
   trashdroid
 ```
 
-**Full auto mode** (no prompts):
+> **Note:** When prompted for scrcpy live screen mirroring, say **"no"**. scrcpy requires a display server (X11/Wayland) which isn't available inside a container. This doesn't affect testing — all screenshots are still captured automatically via `adb screencap`. Alternatively, use `--auto` mode to skip the prompt entirely.
+
+**Full auto mode** (no prompts, scrcpy skipped automatically):
 
 ```bash
 docker run -it --network host \
